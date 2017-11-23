@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTPropsAnimatedNode.m \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTPropsAnimatedNode.h \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTAnimatedNode.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUIManager.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/stephanholly/workspace/capstone/opento/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/RCTAnimationUtils.h \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTStyleAnimatedNode.h \
+  /Users/stephanholly/workspace/capstone/opento/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.h

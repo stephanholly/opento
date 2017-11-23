@@ -1,0 +1,110 @@
+import React from 'react';
+import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as signupActions from '../actions/signup';
+
+class SignUp extends React.Component {
+  handleEmail = (text) => {
+    this.props.signupActions.emailInput(text);
+  }
+  handlePw = (text) => {
+    this.props.signupActions.pwInput(text);
+  }
+  handleSignup = () => {
+    this.props.signupActions.signup(
+      this.props.signup.email,
+      this.props.signup.password
+    ).then(() => this.props.navigation.navigate('Splash'))
+  }
+
+
+  static navigationOptions = {
+  header: null
+};
+  render() {
+
+    const { navigate } = this.props.navigation;
+    return (
+      <View style={styles.container}>
+        <Image
+          style={styles.logo}
+          source={require('../images/logo.png')}
+          />
+          <View style={styles.inputs}>
+          <TextInput
+            style={styles.username}
+            autoCorrect={false}
+            placeholder="Email"
+            onChangeText={this.handleEmail}
+            value={this.props.signup.email}
+            />
+          <TextInput
+            style={styles.password}
+            secureTextEntry
+            autoCorrect={false}
+            placeholder="Password"
+            onChangeText={this.handlePw}
+            value={this.props.signup.password}
+            />
+          <TouchableOpacity style={styles.button} onPress={this.handleSignup}>
+            <Button onPress={this.handleSignup} color="white" title="Create User"/>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#79CAE4',
+    height: '100%',
+  },
+  logo: {
+    marginTop: 110,
+    alignSelf: 'center',
+  },
+  username: {
+    height: 30,
+    alignSelf: 'center',
+    textAlign: 'center',
+    width: '60%',
+    marginTop: 20,
+    backgroundColor: 'white'
+  },
+  password: {
+    height: 30,
+    textAlign: 'center',
+    alignSelf: 'center',
+    width: '60%',
+    marginTop: 20,
+    backgroundColor: 'white'
+  },
+  button: {
+    backgroundColor: '#2D9CDB',
+    marginTop: 20,
+    alignSelf: 'center',
+    borderRadius: 10,
+    padding: 10,
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+});
+
+const mapStateToProps = (state) => {
+  return {
+    signup: state.signup
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signupActions: bindActionCreators(signupActions, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
