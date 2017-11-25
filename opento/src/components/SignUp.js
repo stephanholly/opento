@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as signupActions from '../actions/signup';
+import * as serverSignUpActions from '../actions/serverSignUp';
 
 class SignUp extends React.Component {
   handleEmail = (text) => {
@@ -13,12 +14,24 @@ class SignUp extends React.Component {
   handlePw = (text) => {
     this.props.signupActions.pwInput(text);
   }
-  handleSignup = () => {
-    this.props.signupActions.signup(
-      this.props.signup.email,
-      this.props.signup.password
-    ).then(() => this.props.navigation.navigate('Splash'))
+  handleFn = (text) => {
+    this.props.signupActions.firstName(text);
   }
+  handleLn = (text) => {
+    this.props.signupActions.lastName(text);
+  }
+  handleUn = (text) => {
+    this.props.signupActions.username(text);
+  }
+  handleSignup = () => {
+    this.props.signupActions.signup(this.props.signup.email,this.props.signup.password)
+    .then(() => {
+      this.props.signupActions.postDB(this.props.signup)
+    .then(() => {
+      this.props.navigation.navigate('Splash')
+    })
+  })
+}
 
 
   static navigationOptions = {
@@ -34,21 +47,42 @@ class SignUp extends React.Component {
           source={require('../images/logo.png')}
           />
           <View style={styles.inputs}>
-          <TextInput
-            style={styles.username}
-            autoCorrect={false}
-            placeholder="Email"
-            onChangeText={this.handleEmail}
-            value={this.props.signup.email}
-            />
-          <TextInput
-            style={styles.password}
-            secureTextEntry
-            autoCorrect={false}
-            placeholder="Password"
-            onChangeText={this.handlePw}
-            value={this.props.signup.password}
-            />
+            <TextInput
+              style={styles.username}
+              autoCorrect={false}
+              placeholder="Username"
+              onChangeText={this.handleUn}
+              value={this.props.signup.username}
+              />
+            <TextInput
+              style={styles.password}
+              autoCorrect={false}
+              placeholder="First Name"
+              onChangeText={this.handleFn}
+              value={this.props.signup.firstName}
+              />
+            <TextInput
+              style={styles.password}
+              autoCorrect={false}
+              placeholder="Last Name"
+              onChangeText={this.handleLn}
+              value={this.props.signup.lastName}
+              />
+            <TextInput
+              style={styles.password}
+              autoCorrect={false}
+              placeholder="Email"
+              onChangeText={this.handleEmail}
+              value={this.props.signup.email}
+              />
+            <TextInput
+              style={styles.password}
+              secureTextEntry
+              autoCorrect={false}
+              placeholder="Password"
+              onChangeText={this.handlePw}
+              value={this.props.signup.password}
+              />
           <TouchableOpacity style={styles.button} onPress={this.handleSignup}>
             <Button onPress={this.handleSignup} color="white" title="Create User"/>
           </TouchableOpacity>
@@ -98,12 +132,14 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     signup: state.signup
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signupActions: bindActionCreators(signupActions, dispatch)
+    signupActions: bindActionCreators(signupActions, dispatch),
+    serverSignUpActions: bindActionCreators(serverSignUpActions, dispatch)
   };
 };
 

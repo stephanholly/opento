@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import axios from 'axios'
 
 export const emailInput = (email) => {
   return {
@@ -14,6 +15,38 @@ export const pwInput = (pw) => {
   };
 };
 
+export const firstName = (fn) => {
+  return {
+    type: 'FIRST_INPUT',
+    payload: fn
+  };
+};
+
+export const lastName = (ln) => {
+  return {
+    type: 'LAST_INPUT',
+    payload: ln
+  };
+};
+
+export const username = (username) => {
+  return {
+    type: 'USERNAME_INPUT',
+    payload: username
+  };
+};
+
+export const postDB = (info) => {
+  console.log(info);
+  return {
+    type: 'POSTDB',
+    payload: axios.post(`http://localhost:3000/users/`, JSON.stringify(info))
+    .catch((error) => {
+      console.log(error);
+    })
+  };
+}
+
 export const signup = (email, pw) => {
   return {
     type: 'SIGNUP',
@@ -26,8 +59,8 @@ export const signup = (email, pw) => {
           uid: user.uid
         };
       })
-      .catch(() => {
-        nav.navigate('SignupFail');
+      .catch((error) => {
+        console.log(error);
       })
   };
 };

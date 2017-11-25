@@ -6,6 +6,7 @@ import signup from './signup';
 import toggle from './toggle';
 import tabs from './tabs';
 import friendSearch from './friendSearch'
+import serverSignUp from './serverSignUp'
 
 const rootReducer = combineReducers({
   nav,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   signup,
   toggle,
   tabs,
-  friendSearch
+  friendSearch,
+  serverSignUp
 });
 
 export default rootReducer;

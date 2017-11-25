@@ -1,9 +1,11 @@
 const initialState = {
   email: '',
-  password: '',
   uid: '',
-  error: '',
-  loading: false
+  picUrl: '../images/profilepic.png',
+  username: '',
+  firstName: '',
+  lastName: '',
+  password: ''
 };
 
 export default (state = initialState, action) => {
@@ -12,14 +14,22 @@ export default (state = initialState, action) => {
       return { ...state, email: action.payload };
     case 'PW_INPUT':
       return { ...state, password: action.payload };
+    case 'FIRST_INPUT':
+      return { ...state, firstName: action.payload };
+    case 'LAST_INPUT':
+      return { ...state, lastName: action.payload };
+    case 'USERNAME_INPUT':
+      return { ...state, username: action.payload };
+    case 'POSTDB_FULFILLED':
+    console.log("action payload", action.payload)
+        return state
+    case 'POSTDB_REJECTED':
+      console.log("defp", action.payload)
     case 'SIGNUP_FULFILLED':
-      console.log('action', action);
-      return {
-        ...state,
+      return { ...state,
         email: action.payload.email,
-        pw: '',
         uid: action.payload.uid
-      };
+        };
     case 'SIGNUP_REJECTED':
       return { ...initialState, error: 'Login Failed' };
     default:

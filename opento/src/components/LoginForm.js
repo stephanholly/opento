@@ -52,7 +52,7 @@ class LoginForm extends Component {
             <Button onPress={this.handleLogin} color="white" title="Login"/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Button color="#2D9CDB" onPress={() => navigate('Feed')} title="Sign up"/>
+            <Button color="#2D9CDB" onPress={() => navigate('SignUp')} title="Sign up"/>
           </TouchableOpacity>
         </View>
       </View>

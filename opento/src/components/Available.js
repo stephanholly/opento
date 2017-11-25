@@ -6,11 +6,6 @@ import ChooseFriends from './ChooseFriends'
 
 class Available extends React.Component {
 
-
-  onDateChange = (date) => {
-  this.setState({date: date});
-}
-
   render() {
 
     const { navigate } = this.props.navigation;
@@ -18,19 +13,25 @@ class Available extends React.Component {
       <View style={styles.container}>
         <View style={styles.input1}>
           <Text style={styles.text}>Beginning: </Text>
-            <DatePickerIOS
-              style={styles.time}
-              date={new Date()}
-              mode="time"
-              onDateChange={this.onDateChange}
-              minuteInterval={10}
+            <TextInput
+              style={styles.from}
+              autoCorrect={false}
             />
+        </View>
+        <View style={styles.input2}>
+          <Text style={styles.text}>Location: </Text>
+          <TextInput
+            style={styles.from2}
+            autoCorrect={false}
+          />
           <TouchableOpacity style={styles.enterButton} onPress={() => navigate('ChooseFriends')}>
             <Image style={styles.next}  source={require('../images/go.png')}/>
           </TouchableOpacity>
         </View>
 
-      </View>
+
+
+    </View>
     );s
   }
 }
@@ -49,7 +50,15 @@ const styles = StyleSheet.create({
   },
   input1: {
     flexDirection: 'row',
-    marginTop: 15,
+    marginTop: 10,
+    marginLeft: 16,
+    justifyContent: 'space-between',
+    width: '80%',
+    alignSelf: 'flex-start',
+  },
+  input2: {
+    flexDirection: 'row',
+    marginTop: 5,
     justifyContent: 'space-between',
     width: '90%',
     alignSelf: 'center',
@@ -63,7 +72,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     backgroundColor: 'white',
-    marginTop: 30
+    marginTop: 10
+  },
+  from2: {
+    height: 30,
+    width: '57%',
+    alignSelf: 'center',
+    textAlign: 'center',
+    backgroundColor: 'white',
+    marginTop: 10
   },
   button: {
     backgroundColor: '#2D9CDB',
@@ -79,8 +96,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     paddingLeft: 7,
-    marginTop: 0,
-    marginLeft: 3,
+    marginTop: 10,
+    marginLeft: 8,
     height: 30
   },
   profilePic: {
@@ -89,13 +106,12 @@ const styles = StyleSheet.create({
   next: {
     height: 20,
     width: 20,
-    padding: 5
+    padding: 5,
   },
   text: {
-
     fontSize: 26,
     color: 'white',
-    marginTop: 88,
+    marginTop: 10,
   },
 });
 
