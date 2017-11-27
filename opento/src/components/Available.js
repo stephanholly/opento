@@ -11,13 +11,6 @@ class Available extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={styles.input1}>
-          <Text style={styles.text}>Beginning: </Text>
-            <TextInput
-              style={styles.from}
-              autoCorrect={false}
-            />
-        </View>
         <View style={styles.input2}>
           <Text style={styles.text}>Location: </Text>
           <TextInput

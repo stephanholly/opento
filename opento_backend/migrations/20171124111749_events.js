@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.timestamps(true, true);
     table.string('location');
     table.integer('clicks');
-    table.integer('eventCreatorID');
+    table.integer('eventcreatorid');
   })
 };
 

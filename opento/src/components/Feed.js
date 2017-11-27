@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons';
 
 import HeaderInfo from './HeaderInfo';
@@ -9,9 +10,26 @@ import MyEvents from './MyEvents'
 import JoinedEvents from './JoinedEvents'
 import MyFeed from './MyFeed'
 
-
+import * as userActions from '../actions/user'
+import * as getFeedActions from '../actions/getFeed'
+import * as getActiveActions from '../actions/getActive'
+import * as getMyEventsActions from '../actions/getMyEvents'
 
 class Feed extends React.Component {
+
+  componentWillMount = () => {
+      this.props.userActions.getUser(this.props.login.uid)
+      .then(() => {
+      this.props.userActions.getClickSum(this.props.login.uid)
+      this.props.userActions.getEventSum(this.props.login.uid)
+      this.props.userActions.getFriendsTotal(this.props.login.uid)
+      this.props.getFeedActions.getFeed(this.props.login.uid)
+      this.props.getActiveActions.getActive(this.props.login.uid)
+      this.props.getMyEventsActions.getMyEvents(this.props.user.username)
+  })
+}
+
+
   static navigationOptions = ({ navigation }) => ({
     title: <Image
       style={styles.iconCenter}
@@ -34,11 +52,11 @@ class Feed extends React.Component {
     return (
 
       <View style={styles.container}>
-        <HeaderInfo navigation={this.props.navigation}/>
+        <HeaderInfo user={this.props.user} navigation={this.props.navigation}/>
         <Tabs/>
-        {(this.props.myevents === true)? <MyEvents /> : null}
-        {(this.props.feed === true)? <MyFeed /> : null}
-        {(this.props.active === true)? <JoinedEvents /> : null}
+        {(this.props.myevents === true)? <MyEvents getMyEvents={this.props.getMyEvents}/> : null}
+        {(this.props.feed === true)? <MyFeed getFeed={this.props.getFeed}/> : null}
+        {(this.props.active === true)? <JoinedEvents getActive={this.props.getActive}/> : null}
       </View>
     );
   }
@@ -48,6 +66,7 @@ class Feed extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#79CAE4',
+    height: '100%'
 
   },
   logo: {
@@ -99,8 +118,22 @@ const mapStateToProps = (state) => {
   return {
     myevents: state.tabs.myevents,
     feed: state.tabs.feed,
-    active: state.tabs.active
+    active: state.tabs.active,
+    login: state.login,
+    user: state.user,
+    getFeed: state.getFeed,
+    getMyEvents: state.getMyEvents,
+    getActive: state.getActive
   };
 };
 
-export default connect(mapStateToProps, null)(Feed);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+    getFeedActions: bindActionCreators(getFeedActions, dispatch),
+    getActiveActions: bindActionCreators(getActiveActions, dispatch),
+    getMyEventsActions: bindActionCreators(getMyEventsActions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);

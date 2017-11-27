@@ -1,31 +1,36 @@
-import React from 'react';
-import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
-import { connect } from 'react-redux';
+import React from 'react'
+import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextInput} from 'react-native';
+import SingleFeedItem from './SingleFeedItem'
 
-class MyFeed extends React.Component {
 
-  render() {
+const MyFeed = ({getFeed}) => {
+
+  let theFeed = getFeed.map((feed, idx) => <SingleFeedItem
+      key={idx}
+      id={feed.id}
+      username={ feed.eventcreatorname }
+      clicks={ feed.clicks }
+      active={ feed.active}
+      clicked={ feed.clicked }
+      location={feed.location}
+      picurl={feed.creatorpic}
+    />)
+
+
     return (
-      <View style={styles.container}>
-        <Text> My Feed</Text>
-      </View>
-    );
-  }
-}
 
+      <ScrollView style={styles.container}>
+          {theFeed}
+      </ScrollView>
+    )
+}
 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    height: '100%'
-  },
-  profilePic: {
-    borderRadius: 50,
+    backgroundColor: '#79CAE4',
   },
 
 });
 
-
-
-export default connect(null, null)(MyFeed);
+export default MyFeed;

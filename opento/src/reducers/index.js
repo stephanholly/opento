@@ -6,7 +6,13 @@ import signup from './signup';
 import toggle from './toggle';
 import tabs from './tabs';
 import friendSearch from './friendSearch'
-import serverSignUp from './serverSignUp'
+import feed from './feed'
+import user from './user'
+import users from './users'
+import getFeed from './getFeed'
+import getMyEvents from './getMyEvents'
+import getActive from './getActive'
+import filterPhrase from './filterPhrase'
 
 const rootReducer = combineReducers({
   nav,
@@ -16,7 +22,13 @@ const rootReducer = combineReducers({
   toggle,
   tabs,
   friendSearch,
-  serverSignUp
+  feed,
+  user,
+  users,
+  getFeed,
+  getActive,
+  getMyEvents,
+  filterPhrase
 });
 
 export default rootReducer;

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as toggle from '../actions/toggle';
+import * as userActions from '../actions/user'
 
 import Available from './Available'
 
@@ -12,24 +13,26 @@ import Available from './Available'
 class HeaderInfo extends React.Component {
 
   render() {
+    let picture = this.props.user.picurl
+    console.log("pic", picture)
     return (
       <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.left}>
           <View style={styles.available}></View>
-          <Image style={styles.profilePic} source={require('../images/profilepic.png')}/>
+          <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
         </View>
         <View style={styles.right}>
-          <Text style={styles.title}>Stephan Holly</Text>
+          <Text style={styles.title}>{this.props.user.username}</Text>
           <View style={styles.info}>
             <Text style={styles.cef}>Clicks</Text>
             <Text style={styles.cef}>Events</Text>
             <Text style={styles.cef}>Friends</Text>
           </View>
           <View style={styles.info}>
-            <Text style={styles.nums}>100</Text>
-            <Text style={styles.nums}>234</Text>
-            <Text style={styles.nums}>123</Text>
+            <Text style={styles.nums}>{this.props.user.clicksum === null? 0 : this.props.user.clicksum}</Text>
+            <Text style={styles.nums}>{this.props.user.eventsum}</Text>
+            <Text style={styles.nums}>{this.props.user.friendstotal}</Text>
           </View>
           <TouchableOpacity style={styles.button} >
             <Button style={styles.button}  onPress={() => this.props.toggle.toggleAvailable()} color="#FFFFFF" title="Available"/>
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#2D9CDB',
     alignSelf: 'center',
-    borderRadius: 10,
+    borderRadius: 5,
     padding: 10,
     paddingTop: 0,
     paddingBottom: 0,
@@ -106,13 +109,16 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    toggleForm: state.toggle.toggleForm
+    toggleForm: state.toggle.toggleForm,
+    login: state.login,
+    user: state.user
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggle: bindActionCreators(toggle, dispatch)
+    toggle: bindActionCreators(toggle, dispatch),
+    userActions: bindActionCreators(userActions, dispatch),
   };
 };
 

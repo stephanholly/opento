@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as signupActions from '../actions/signup';
-import * as serverSignUpActions from '../actions/serverSignUp';
+
 
 class SignUp extends React.Component {
   handleEmail = (text) => {
@@ -15,10 +15,10 @@ class SignUp extends React.Component {
     this.props.signupActions.pwInput(text);
   }
   handleFn = (text) => {
-    this.props.signupActions.firstName(text);
+    this.props.signupActions.firstname(text);
   }
   handleLn = (text) => {
-    this.props.signupActions.lastName(text);
+    this.props.signupActions.lastname(text);
   }
   handleUn = (text) => {
     this.props.signupActions.username(text);
@@ -59,14 +59,14 @@ class SignUp extends React.Component {
               autoCorrect={false}
               placeholder="First Name"
               onChangeText={this.handleFn}
-              value={this.props.signup.firstName}
+              value={this.props.signup.firstname}
               />
             <TextInput
               style={styles.password}
               autoCorrect={false}
               placeholder="Last Name"
               onChangeText={this.handleLn}
-              value={this.props.signup.lastName}
+              value={this.props.signup.lastname}
               />
             <TextInput
               style={styles.password}

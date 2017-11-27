@@ -1,31 +1,36 @@
-import React from 'react';
-import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
-import { connect } from 'react-redux';
+import React from 'react'
+import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextInput} from 'react-native';
+import SingleActiveItem from './SingleActiveItem'
 
-class JoinedEvents extends React.Component {
 
-  render() {
+const JoinedEvents = ({getActive}) => {
+
+  let theActive = getActive.map((active, idx) => <SingleActiveItem
+      key={idx}
+      id={active.id}
+      username={ active.eventcreatorname }
+      clicks={ active.clicks }
+      active={ active.active}
+      clicked={ active.clicked }
+      location={active.location}
+      picurl={active.creatorpic}
+    />)
+
+
     return (
-      <View style={styles.container}>
-        <Text>joined</Text>
-      </View>
-    );
-  }
-}
 
+      <ScrollView style={styles.container}>
+          {theActive}
+      </ScrollView>
+    )
+}
 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    height: '100%'
-  },
-  profilePic: {
-    borderRadius: 50,
+    backgroundColor: '#79CAE4',
   },
 
 });
 
-
-
-export default connect(null, null)(JoinedEvents);
+export default JoinedEvents;

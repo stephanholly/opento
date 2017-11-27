@@ -1,23 +1,27 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class FriendSearch extends React.Component {
+import * as friendSearch from '../actions/friendSearch';
+import {filterPhrase} from '../actions/filterPhrase';
 
-  render() {
+
+const FriendSearch = ({filterPhrase, sortBy}) => {
     return (
       <View style={styles.container}>
       <TextInput
         style={styles.searchBox}
         autoCorrect={false}
         placeholder="Search"
+        onChange={e => this.props.filterPhrase(e.target.value)}
         />
       <TouchableOpacity style={styles.button} >
-        <Button style={styles.button}  onPress={null} color="#FFFFFF" title="Enter"/>
+        <Button style={styles.button}  onPress={() => this.props.friendSearch.friendSearch()} color="#FFFFFF" title="Cancel"/>
       </TouchableOpacity>
       </View>
     );
-  }
+
 }
 
 
@@ -28,10 +32,21 @@ const styles = StyleSheet.create({
   searchBox: {
     backgroundColor: 'white',
     margin: 3,
-    width: '82%'
+    width: '80%'
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    friendSearchState: state.friendSearch.friendSearchState
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterPhrase: bindActionCreators(filterPhrase, dispatch),
+    friendSearch: bindActionCreators(friendSearch, dispatch)
+  };
+};
 
-export default connect(null, null)(FriendSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(FriendSearch);

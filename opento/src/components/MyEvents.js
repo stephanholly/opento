@@ -1,30 +1,36 @@
-import React from 'react';
-import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
-import { connect } from 'react-redux';
+import React from 'react'
+import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextInput} from 'react-native';
+import SingleMyEventsItem from './SingleMyEventsItem'
 
-class MyEvents extends React.Component {
-  render() {
+
+const MyEvents = ({getMyEvents}) => {
+
+  let theMyEvents = getMyEvents.map((event, idx) => <SingleMyEventsItem
+      key={idx}
+      id={event.id}
+      username={ event.eventcreatorname }
+      clicks={ event.clicks }
+      active={ event.active}
+      clicked={ event.clicked }
+      location={event.location}
+      picurl={event.creatorpic}
+    />)
+
+
     return (
-      <View style={styles.container}>
-        <Text>My Events</Text>
-      </View>
-    );
-  }
-}
 
+      <ScrollView style={styles.container}>
+          {theMyEvents}
+      </ScrollView>
+    )
+}
 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    height: '100%'
-  },
-  profilePic: {
-    borderRadius: 50,
+    backgroundColor: '#79CAE4',
   },
 
 });
 
-
-
-export default connect(null, null)(MyEvents);
+export default MyEvents;

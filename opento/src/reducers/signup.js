@@ -1,10 +1,10 @@
 const initialState = {
   email: '',
   uid: '',
-  picUrl: '../images/profilepic.png',
+  picurl: '../images/profilepic.png',
   username: '',
-  firstName: '',
-  lastName: '',
+  firstname: '',
+  lastname: '',
   password: ''
 };
 
@@ -15,9 +15,9 @@ export default (state = initialState, action) => {
     case 'PW_INPUT':
       return { ...state, password: action.payload };
     case 'FIRST_INPUT':
-      return { ...state, firstName: action.payload };
+      return { ...state, firstname: action.payload };
     case 'LAST_INPUT':
-      return { ...state, lastName: action.payload };
+      return { ...state, lastname: action.payload };
     case 'USERNAME_INPUT':
       return { ...state, username: action.payload };
     case 'POSTDB_FULFILLED':

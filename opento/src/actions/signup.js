@@ -15,14 +15,14 @@ export const pwInput = (pw) => {
   };
 };
 
-export const firstName = (fn) => {
+export const firstname = (fn) => {
   return {
     type: 'FIRST_INPUT',
     payload: fn
   };
 };
 
-export const lastName = (ln) => {
+export const lastname = (ln) => {
   return {
     type: 'LAST_INPUT',
     payload: ln
@@ -40,7 +40,7 @@ export const postDB = (info) => {
   console.log(info);
   return {
     type: 'POSTDB',
-    payload: axios.post(`http://localhost:3000/users/`, JSON.stringify(info))
+    payload: axios.post(`http://localhost:3000/users/`, info)
     .catch((error) => {
       console.log(error);
     })

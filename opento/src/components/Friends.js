@@ -5,10 +5,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import FriendSearch from './FriendSearch'
+import AllUsers from './AllUsers'
 
 import * as friendSearch from '../actions/friendSearch';
+import * as usersActions from '../actions/users';
+import {filterPhrase} from '../actions/filterPhrase';
+
 
 class Friends extends React.Component {
+  componentWillMount = () => {
+    this.props.usersActions.getAllUsers()
+  }
+
 
   static navigationOptions = ({ navigation }) => ({
     title: <Image
@@ -36,7 +44,7 @@ class Friends extends React.Component {
     return (
       <View style={styles.container}>
         {(this.props.friendSearchState === true)? <FriendSearch /> : null}
-        <Text>friends list</Text>
+        <AllUsers users={this.props.users} filterPhrase={this.props.filterPhrase}/>
       </View>
     );
   }
@@ -73,13 +81,18 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     friends: state.friends,
-    friendSearchState: state.friendSearch.friendSearchState
+    friendSearchState: state.friendSearch.friendSearchState,
+    users: state.users,
+    filterPhrase: state.filterPhrase,
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    friendSearch: bindActionCreators(friendSearch, dispatch)
+    filterPhrase: bindActionCreators(filterPhrase, dispatch),
+    friendSearch: bindActionCreators(friendSearch, dispatch),
+    usersActions: bindActionCreators(usersActions, dispatch)
   };
 };
 
