@@ -1,8 +1,13 @@
-export default(state = '', action) => {
+const initialState = {
+  phrase: ''
+
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_FILTER_PHRASE':
-      return action.payload;
+    case 'PHRASE_INPUT':
+      return { ...state, phrase: action.payload };
     default:
       return state;
   }
-}
+};

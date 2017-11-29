@@ -1,9 +1,10 @@
 import React from 'react'
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextInput} from 'react-native';
 import SingleMyEventsItem from './SingleMyEventsItem'
+import SingleFriendRequest from './SingleFriendRequest'
 
 
-const MyEvents = ({getMyEvents}) => {
+const MyEvents = ({getMyEvents, pendingFRInfo}) => {
 
   let theMyEvents = getMyEvents.map((event, idx) => <SingleMyEventsItem
       key={idx}
@@ -16,10 +17,19 @@ const MyEvents = ({getMyEvents}) => {
       picurl={event.creatorpic}
     />)
 
+    let theMyFR = pendingFRInfo.map((fr, idx) => <SingleFriendRequest
+        key={idx}
+        id={fr.friendid1}
+        username={ fr.username }
+        picurl={fr.picurl}
+        show={true}
+      />)
+
 
     return (
 
       <ScrollView style={styles.container}>
+          {theMyFR}
           {theMyEvents}
       </ScrollView>
     )

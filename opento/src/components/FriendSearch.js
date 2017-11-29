@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as friendSearch from '../actions/friendSearch';
-import {filterPhrase} from '../actions/filterPhrase';
 
 
-const FriendSearch = ({filterPhrase, sortBy}) => {
+
+const FriendSearch = () => {
+
     return (
       <View style={styles.container}>
       <TextInput
         style={styles.searchBox}
         autoCorrect={false}
         placeholder="Search"
-        onChange={e => this.props.filterPhrase(e.target.value)}
         />
       <TouchableOpacity style={styles.button} >
         <Button style={styles.button}  onPress={() => this.props.friendSearch.friendSearch()} color="#FFFFFF" title="Cancel"/>
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    friendSearchState: state.friendSearch.friendSearchState
+    friendSearchState: state.friendSearch.friendSearchState,
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterPhrase: bindActionCreators(filterPhrase, dispatch),
     friendSearch: bindActionCreators(friendSearch, dispatch)
   };
 };

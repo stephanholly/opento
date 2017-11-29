@@ -14,10 +14,12 @@ import * as userActions from '../actions/user'
 import * as getFeedActions from '../actions/getFeed'
 import * as getActiveActions from '../actions/getActive'
 import * as getMyEventsActions from '../actions/getMyEvents'
+import * as pendingFRActions from '../actions/pendingFR'
+import * as pendingFRInfoActions from '../actions/pendingFRInfo'
 
 class Feed extends React.Component {
 
-  componentWillMount = () => {
+  componentDidMount = () => {
       this.props.userActions.getUser(this.props.login.uid)
       .then(() => {
       this.props.userActions.getClickSum(this.props.login.uid)
@@ -26,6 +28,9 @@ class Feed extends React.Component {
       this.props.getFeedActions.getFeed(this.props.login.uid)
       this.props.getActiveActions.getActive(this.props.login.uid)
       this.props.getMyEventsActions.getMyEvents(this.props.user.username)
+      this.props.userActions.getFriendIds(this.props.user.id)
+      this.props.pendingFRActions.pendingFR(this.props.user.id)
+      this.props.pendingFRInfoActions.pendingFRInfo(this.props.user.id)
   })
 }
 
@@ -48,13 +53,14 @@ class Feed extends React.Component {
     },
   });
   render() {
+    console.log("pendingFRInfo", this.props.pendingFRInfo)
     const { navigate } = this.props.navigation;
     return (
 
       <View style={styles.container}>
         <HeaderInfo user={this.props.user} navigation={this.props.navigation}/>
         <Tabs/>
-        {(this.props.myevents === true)? <MyEvents getMyEvents={this.props.getMyEvents}/> : null}
+        {(this.props.myevents === true)? <MyEvents pendingFRInfo={this.props.pendingFRInfo} getMyEvents={this.props.getMyEvents}/> : null}
         {(this.props.feed === true)? <MyFeed getFeed={this.props.getFeed}/> : null}
         {(this.props.active === true)? <JoinedEvents getActive={this.props.getActive}/> : null}
       </View>
@@ -121,9 +127,11 @@ const mapStateToProps = (state) => {
     active: state.tabs.active,
     login: state.login,
     user: state.user,
+    pendingFR: state.pendingFR,
     getFeed: state.getFeed,
     getMyEvents: state.getMyEvents,
-    getActive: state.getActive
+    getActive: state.getActive,
+    pendingFRInfo: state.pendingFRInfo
   };
 };
 
@@ -133,6 +141,8 @@ const mapDispatchToProps = (dispatch) => {
     getFeedActions: bindActionCreators(getFeedActions, dispatch),
     getActiveActions: bindActionCreators(getActiveActions, dispatch),
     getMyEventsActions: bindActionCreators(getMyEventsActions, dispatch),
+    pendingFRActions: bindActionCreators(pendingFRActions, dispatch),
+    pendingFRInfoActions: bindActionCreators(pendingFRInfoActions, dispatch)
   };
 };
 

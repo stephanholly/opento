@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet,  TextInput} from 'react-native';
 import { connect } from 'react-redux';
 
+import FriendRequest from './FriendRequest'
 
 class IndFriendList extends React.Component {
 
@@ -10,7 +11,11 @@ class IndFriendList extends React.Component {
     return (
       <View style={styles.container}>
         <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
-        <Text style={styles.username}>{this.props.username}</Text>
+
+          <Text style={styles.username}>{this.props.username}</Text>
+
+            {this.props.user.friendshipids? (this.props.user.friendshipids.includes(this.props.id)? <View style={styles.nada}></View> : (this.props.pendingFR.pendingFR.includes(this.props.id) === true? <Image style={styles.clicked} source={require('../images/clock.gif')}/> : <FriendRequest info={this.props}/>)) : null}
+
       </View>
     );
   }
@@ -23,7 +28,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#79CAE4',
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: 'white'
+    borderBottomColor: 'white',
+    alignSelf: 'center',
+    width: '100%',
+    justifyContent: 'space-between'
   },
   profilePic: {
     borderRadius: 20,
@@ -33,13 +41,33 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   username: {
-    marginLeft: 25,
+
     color: 'white',
     fontSize: 30,
     paddingTop: 8
-  }
+  },
+  nada: {
+    height: 20,
+    width: 20,
+    marginTop: 20,
+    marginRight: 10
+  },
+
+  clicked: {
+    height: 20,
+    width: 20,
+    marginTop: 20,
+    marginRight: 10
+  },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    pendingFR: state.pendingFR
+  };
+};
 
 
-export default connect(null, null)(IndFriendList);
+
+export default connect(mapStateToProps, null)(IndFriendList);

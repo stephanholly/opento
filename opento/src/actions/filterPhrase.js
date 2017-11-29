@@ -1,6 +1,6 @@
-export const filterPhrase = (phrase) => {
+export const phraseInput = (phrase) => {
   return {
-    type: 'UPDATE_FILTER_PHRASE',
+    type: 'PHRASE_INPUT',
     payload: phrase
-  }
-}
+  };
+};

@@ -9,12 +9,11 @@ import AllUsers from './AllUsers'
 
 import * as friendSearch from '../actions/friendSearch';
 import * as usersActions from '../actions/users';
-import {filterPhrase} from '../actions/filterPhrase';
 
 
 class Friends extends React.Component {
   componentWillMount = () => {
-    this.props.usersActions.getAllUsers()
+    this.props.usersActions.getAllUsers(this.props.user.id)
   }
 
 
@@ -29,7 +28,7 @@ class Friends extends React.Component {
       /></TouchableOpacity>,
     headerRight: <TouchableOpacity onPress={() => this.handleFriendSearch()}><Image
       style={styles.iconRight}
-      source={require('../images/plus.png')}
+      source={require('../images/mag1.png')}
       /></TouchableOpacity>,
     headerStyle: {
       backgroundColor: '#79CAE4',
@@ -44,7 +43,7 @@ class Friends extends React.Component {
     return (
       <View style={styles.container}>
         {(this.props.friendSearchState === true)? <FriendSearch /> : null}
-        <AllUsers users={this.props.users} filterPhrase={this.props.filterPhrase}/>
+        <AllUsers users={this.props.users}/>
       </View>
     );
   }
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
   iconRight: {
     marginRight: 15,
     height: 30,
-    width: 30,
+    width: 37,
   },
 });
 
@@ -83,14 +82,13 @@ const mapStateToProps = (state) => {
     friends: state.friends,
     friendSearchState: state.friendSearch.friendSearchState,
     users: state.users,
-    filterPhrase: state.filterPhrase,
-
+    user: state.user
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterPhrase: bindActionCreators(filterPhrase, dispatch),
+
     friendSearch: bindActionCreators(friendSearch, dispatch),
     usersActions: bindActionCreators(usersActions, dispatch)
   };

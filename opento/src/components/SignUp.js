@@ -139,7 +139,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signupActions: bindActionCreators(signupActions, dispatch),
-    serverSignUpActions: bindActionCreators(serverSignUpActions, dispatch)
   };
 };
 

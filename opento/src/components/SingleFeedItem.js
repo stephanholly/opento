@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   },
   rows: {
   alignSelf: 'center',
-  textAlign: 'center'
   },
   clickImage: {
     height: 18,

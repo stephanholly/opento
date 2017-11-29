@@ -32,3 +32,10 @@ export const getClickSum = (uid) => {
     payload: axios.get(`http://localhost:3000/events/clicksum/`+`${uid}`)
   };
 }
+
+export const getFriendIds = (id) => {
+return {
+  type: 'GET_FRIEND_IDS',
+  payload: axios.get(`http://localhost:3000/users/friendshipids/`+`${id}`)
+};
+}
