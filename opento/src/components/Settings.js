@@ -80,7 +80,7 @@ const mapStateToProps = (state) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#79CAE4',
     height: '100%',
   },
   header: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     width: '70%',
     alignSelf: 'center',
     marginTop: 75,
-    backgroundColor: 'white'
+    backgroundColor: '#79CAE4'
   },
   profilePic: {
     borderRadius: 37.5,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     width: 25,
   },
   logoutdelete: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#2D9CDB',
     alignSelf: 'center',
     borderRadius: 10,
     padding: 10,

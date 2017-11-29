@@ -1,10 +1,17 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput, DatePickerIOS} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import ChooseFriends from './ChooseFriends'
 
+import * as createEventActions from '../actions/createEvent'
+
 class Available extends React.Component {
+  handleLocation = (text) => {
+    this.props.createEventActions.locationInput(text);
+  }
+
 
   render() {
 
@@ -16,6 +23,8 @@ class Available extends React.Component {
           <TextInput
             style={styles.from2}
             autoCorrect={false}
+            onChangeText={this.handleLocation}
+            value={this.props.createEvent.location}
           />
           <TouchableOpacity style={styles.enterButton} onPress={() => navigate('ChooseFriends')}>
             <Image style={styles.next}  source={require('../images/go.png')}/>
@@ -30,12 +39,6 @@ class Available extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    friends: state.friends,
-    date: state.date
-  };
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -109,5 +112,20 @@ const styles = StyleSheet.create({
 });
 
 
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    date: state.date,
+    createEvent: state.createEvent
+  };
+};
 
-export default connect(mapStateToProps, null)(Available);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEventActions: bindActionCreators(createEventActions, dispatch),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Available);

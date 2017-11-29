@@ -8,9 +8,6 @@ import * as userActions from '../actions/user'
 
 class SingleFriendRequest extends React.Component {
 
-  changeShow = () => {
-    this.props.show = false
-  }
 
   render() {
     let picture = this.props.picurl
@@ -29,12 +26,14 @@ class SingleFriendRequest extends React.Component {
             this.props.updateFRActions.acceptFR(this.props.user.id, this.props.id)
             .then(()=> {
             this.props.userActions.getFriendsTotal(this.props.login.uid)
-            this.changeShow()
             })
           }}>
             <Text style={styles.buttonfont}>Accept</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.acceptdeny} onPress={null}>
+          <TouchableOpacity style={styles.acceptdeny} onPress={() => {
+            this.props.updateFRActions.denyFR(this.props.user.id, this.props.id)
+            }
+          }>
             <Text style={styles.buttonfont}>Deny</Text>
           </TouchableOpacity>
         </View>
@@ -102,7 +101,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    pendingFRInfo: state.pendingFRInfo
+    pendingFRInfo: state.pendingFRInfo,
+    login: state.login
   };
 };
 

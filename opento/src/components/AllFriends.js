@@ -1,25 +1,25 @@
 import React from 'react'
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextInput} from 'react-native';
-import IndFriendList from './IndFriendList'
+import IndFriend from './IndFriend'
 
 
-const AllUsers = ({users}) => {
+const AllFriends = ({friends}) => {
 
-  let theUsers = users.map((induser, idx) => <IndFriendList
+  let theFriends = friends.map((friend, idx) => <IndFriend
       key={idx}
-      id={induser.id}
-      username={ induser.username }
-      firstname={ induser.firstname }
-      lastname={ induser.lastname}
-      picurl={ induser.picurl }
-      uid={induser.uid}
+      id={friend.id}
+      username={ friend.username }
+      firstname={ friend.firstname }
+      lastname={ friend.lastname}
+      picurl={ friend.picurl }
+      uid={friend.uid}
     />)
 
 
     return (
       <View style ={styles.container}>
       <ScrollView style={styles.container}>
-          {theUsers}
+          {theFriends}
       </ScrollView>
       </View>
     )
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
 
 
 
-export default AllUsers;
+export default AllFriends;

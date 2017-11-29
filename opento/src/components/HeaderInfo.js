@@ -19,7 +19,7 @@ class HeaderInfo extends React.Component {
       <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.left}>
-          <View style={styles.available}></View>
+          {this.props.getMyEvents !== []? <View style={styles.available}></View> : <View style={styles.notavailable}></View> }
           <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
         </View>
         <View style={styles.right}>
@@ -98,8 +98,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  available: {
+  notavailable: {
     backgroundColor: '#EB5757',
+    height: 25,
+    width: 25,
+    borderRadius: 50,
+  },
+  available: {
+    backgroundColor: 'green',
     height: 25,
     width: 25,
     borderRadius: 50,

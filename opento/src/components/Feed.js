@@ -22,11 +22,11 @@ class Feed extends React.Component {
   componentDidMount = () => {
       this.props.userActions.getUser(this.props.login.uid)
       .then(() => {
+      this.props.getActiveActions.getActive(this.props.login.uid)
       this.props.userActions.getClickSum(this.props.login.uid)
       this.props.userActions.getEventSum(this.props.login.uid)
       this.props.userActions.getFriendsTotal(this.props.login.uid)
       this.props.getFeedActions.getFeed(this.props.login.uid)
-      this.props.getActiveActions.getActive(this.props.login.uid)
       this.props.getMyEventsActions.getMyEvents(this.props.user.username)
       this.props.userActions.getFriendIds(this.props.user.id)
       this.props.pendingFRActions.pendingFR(this.props.user.id)

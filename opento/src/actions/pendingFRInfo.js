@@ -8,10 +8,15 @@ export const pendingFRInfo = (id) => {
 }
 
 export const acceptFR = (myid, friendid) => {
-  console.log("myid", myid)
-  console.log("friend", friendid);
   return {
     type: 'ACCEPT_FR',
     payload: axios.post(`http://localhost:3000/users/acceptfriend/`+`${myid}` + `/${friendid}`)
+  };
+}
+
+export const denyFR = (myid, friendid) => {
+  return {
+    type: 'DENY_FR',
+    payload: axios.delete(`http://localhost:3000/users/denyfriend/`+`${myid}` + `/${friendid}`)
   };
 }

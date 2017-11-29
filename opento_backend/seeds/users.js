@@ -13,8 +13,9 @@ exports.seed = function(knex, Promise) {
         {username: 'summersmith', firstname: 'Summer', lastname: 'Smith', password: 'fewfew', email: 'summer@gmail.com', picurl: 'https://i.imgur.com/hyzPhTX.jpg', uid: 'AZUIs989Coe4SzlaqoDwfT4vie32'},
         {username: 'jerrysmith', firstname: 'Jerry', lastname: 'Smith', password: 'fewfew', email: 'jerry@gmail.com', picurl: 'https://i.imgur.com/Eq9oPVO.png', uid: '8bQ1NSPwvaTGsF258fOSkIyPcXI3'},
         {username: 'bethsmith', firstname: 'Beth', lastname: 'Smith', password: 'fewfew', email: 'beth@gmail.com', picurl: 'https://i.imgur.com/wOJMDF7.png', uid: 'eLEmOa7ukSUwuLAYdxjfDicZIKv1'},
-        {username: 'mrpoopybutthole', firstname: 'Bob', lastname: 'Poopybutthole', password: 'fewfew', email: 'mrpoopybutthole@gmail.com', picurl: 'https://i.imgur.com/zqbFtZ5.jpg', uid: 'bjfOHZZrntdDJeX3z6udKHJ3rh62'},
-        {username: 'birdperson', firstname: 'Bird', lastname: 'Person', password: 'fewfew', email: 'birdperson@gmail.com', picurl: 'https://i.imgur.com/6b3KPq5.jpg', uid: 'ENexn7FWp5Por9LdW6tytUn4X3N2'}
+        {username: 'picklerick', firstname: 'Pickle', lastname: 'Rick', password: 'fewfew', email: 'picklerick@gmail.com', picurl: 'https://i.imgur.com/PRtoBSx.jpg', uid: 'V0C56mMLxXVGxD07QNhdAY6jjYG3'},
+        {username: 'birdperson', firstname: 'Bird', lastname: 'Person', password: 'fewfew', email: 'birdperson@gmail.com', picurl: 'https://i.imgur.com/6b3KPq5.jpg', uid: 'ENexn7FWp5Por9LdW6tytUn4X3N2'},
+        {username: 'evilmorty', firstname: 'Evil', lastname: 'Morty', password: 'fewfew', email: 'evilmorty@gmail.com', picurl: 'https://i.imgur.com/YBMxwYR.jpg', uid: 'sEI5UXfTJVYNXh8IRGCkqSaDmAn1'}
 
       ]);
     });

@@ -21,7 +21,7 @@ router.get('/:uid', function(req, res, next) {
 
 //get feed
 router.get('/feed/:uid', function(req, res, next) {
-  knex.raw(`SELECT events.location, events.creatorpic, events.eventcreatorname, events.clicks, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and users.uid = '${req.params.uid}'`)
+  knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.clicks, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and users.uid = '${req.params.uid}'`)
   .then(data => {
     res.json(data.rows)
   });
@@ -29,11 +29,27 @@ router.get('/feed/:uid', function(req, res, next) {
 
 //get active
 router.get('/active/:uid', function(req, res, next) {
-  knex.raw(`SELECT events.location, events.creatorpic, events.eventcreatorname, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and eventinvited.clicked = TRUE and users.uid = '${req.params.uid}'`)
+  knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and eventinvited.clicked = TRUE and users.uid = '${req.params.uid}'`)
   .then(data => {
     res.json(data.rows)
   });
 });
+
+
+//add active
+router.post('/active/add/:eventid/:myid', function(req, res, next) {
+  knex.raw(`update eventinvited set clicked = true where eventid = '${req.params.eventid}' and inviteeid = '${req.params.myid}'`)
+  .then(data => {
+    knex.raw(`update events set clicks = clicks + 1 where events.id = '${req.params.eventid}'`)
+    .then( data2 => {
+    knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on users.id = eventinvited.inviteeid where events.id = '${req.params.eventid}' and users.id = '${req.params.myid}'`)
+  .then(data1 => {
+    res.json(data1.rows)
+  });
+});
+})
+})
+
 
 
 //get myevents
@@ -87,7 +103,7 @@ router.post('/:myid/:friendid', function(req, res, next) {
 
 // get pending friend requests
 router.get('/pendingfrinfo/:id', function(req, res, next) {
-  knex.raw(`SELECT * from users join friendships on users.id = friendships.friendid1 where friendships.friendid2 = '${req.params.id}' and friendships.pending = 'true'`)
+  knex.raw(`SELECT users.id, users.username, users.picurl, users.uid, friendships.friendid1, friendships.friendid2, friendships.pending from users join friendships on users.id = friendships.friendid1 where friendships.friendid2 = ${req.params.id} and friendships.pending = 'true'`)
   .then(data => {
     res.json(data.rows)
   });
@@ -100,8 +116,16 @@ router.post('/acceptfriend/:myid/:friendid', function(req, res, next) {
         knex.raw(`INSERT INTO friendships (friendid1, friendid2, pending) VALUES (${req.params.myid}, ${req.params.friendid}, 'false') returning *`)
       .then(data1 => {
         console.log("data.rows after fr", data.rows)
-        res.json(data.rows)
+        res.json(data1.rows[0])
       })
+    })
+});
+
+// deny friend request
+router.delete('/denyfriend/:myid/:friendid', function(req, res, next) {
+      knex.raw(`delete from friendships where friendships.friendid2 = '${req.params.myid}' and friendships.friendid1 = '${req.params.friendid}' and friendships.pending = 'true' returning *`)
+      .then(data => {
+        res.json(data.rows[0])
     })
 });
 

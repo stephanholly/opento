@@ -1,14 +1,27 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as getActiveActions from '../actions/getActive'
+import * as getFeedActions from '../actions/getFeed'
 
 
 class SingleFeedItem extends React.Component {
 
   render() {
     let picture = this.props.picurl
+
     return (
-      <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          this.props.getActiveActions.addActive(this.props.user.id, this.props.id)
+          .then(() => {
+            this.props.getFeedActions.getFeed(this.props.login.uid)
+          })
+        }}
+        >
+        <View style={styles.container}>
         <View>
           <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
         </View>
@@ -22,9 +35,10 @@ class SingleFeedItem extends React.Component {
             <Image style={styles.clickImage} source={require('../images/clicks.png')}/>
           </View>
             {this.props.clicked === true? <Image style={styles.clicked} source={require('../images/check.png')}/> : null}
-      </View>
+          </View>
 
       </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -87,6 +101,22 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    getFeed: state.getFeed,
+    getActive: state.getActive,
+    user: state.user,
+    login: state.login
+  };
+};
 
 
-export default connect(null, null)(SingleFeedItem);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getActiveActions: bindActionCreators(getActiveActions, dispatch),
+    getFeedActions: bindActionCreators(getFeedActions, dispatch),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleFeedItem);
