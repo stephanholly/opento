@@ -17,7 +17,7 @@ class SingleActiveItem extends React.Component {
           <Text style={styles.location}>{this.props.location}</Text>
         </View>
         <View style={styles.handandclick}>
-        
+
         </View>
       </View>
     );
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   rows: {
   alignSelf: 'center',
-  textAlign: 'center'
+
   },
   clickImage: {
     height: 18,

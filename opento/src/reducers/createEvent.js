@@ -1,4 +1,5 @@
 const initialState = {
+id: '',
 location: '',
 clicks: 0,
 eventcreatorid: '',
@@ -16,16 +17,18 @@ export default (state = initialState, action) => {
       return { ...state, location: action.payload };
     case 'ADD_FRIEND':
       return {...state, friends: state.friends.concat(action.payload)};
+    case 'POPULATE_INVITED_FULFILLED':
+        return state
     case 'CREATE_EVENT_FULFILLED':
       return {
         ...state,
-        location: action.payload.location,
+        location: action.payload.data[0].location,
         clicks: 0,
-        eventcreatorid: action.payload.eventcreatorid,
-        eventcreatorname: action.payload.eventcreatorname,
+        eventcreatorid: action.payload.data[0].eventcreatorid,
+        eventcreatorname: action.payload.data[0].eventcreatorname,
         active: true,
-        creatorpic: action.payload.creatorpic,
-        friends: action.payload.friends
+        creatorpic: action.payload.data[0].creatorpic,
+        id: action.payload.data[0].id
       };
     default:
       return state;

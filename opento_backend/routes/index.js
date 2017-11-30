@@ -37,14 +37,22 @@ router.get('/friends/:id', function(req, res, next) {
 
 // create event part 1
 router.post('/createevent/:location', function(req, res, next) {
-  knex.raw(`insert into events (location, clicks, eventcreatorid, eventcreatorname, active, creatorpic) values ( '${req.params.location}', 0, '${req.body.id}', '${req.body.username}', TRUE, '${req.body.picurl}' ) returning *`)
+  knex.raw(`insert into events (location, clicks, eventcreatorid, eventcreatorname, active, creatorpic) values ( '${req.params.location}', 0, '${req.body.id}', '${req.body.username}', TRUE, '${req.body.picurl}' ) returning * `)
   .then(data => {
-    console.log("data.rows", data.rows)
-    res.json(data.rows[0])
+
+    res.json(data.rows)
   })
 })
 
-
-
+//populate invited
+router.post('/populateinvited', function(req, res, next) {
+  console.log("req.body", req.body)
+  for(let i = 0; i < req.body.friends.length; i++) {
+  knex.raw(`INSERT INTO eventinvited (eventid, inviteeid, clicked) values ('${req.body.id}', '${req.body.friends[i]}', FALSE) returning *`)
+  .then(data1 => {
+    console.log("data.rows pop", data1.rows)
+    res.json(data1.rows)
+  })}
+})
 
 module.exports = router;

@@ -14,12 +14,12 @@ class HeaderInfo extends React.Component {
 
   render() {
     let picture = this.props.user.picurl
-    console.log("pic", picture)
+    console.log("blerg", this.props.getMyEvents[0])
     return (
       <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.left}>
-          {this.props.getMyEvents !== []? <View style={styles.available}></View> : <View style={styles.notavailable}></View> }
+          {this.props.getMyEvents[0]? (<View style={styles.available}></View> ): (<View style={styles.notavailable}></View>) }
           <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
         </View>
         <View style={styles.right}>
@@ -34,12 +34,12 @@ class HeaderInfo extends React.Component {
             <Text style={styles.nums}>{this.props.user.eventsum}</Text>
             <Text style={styles.nums}>{this.props.user.friendstotal}</Text>
           </View>
-          <TouchableOpacity style={styles.button} >
+          {this.props.getMyEvents[0]? null : <TouchableOpacity style={styles.button} >
             <Button style={styles.button}  onPress={() => this.props.toggle.toggleAvailable()} color="#FFFFFF" title="Available"/>
-          </TouchableOpacity>
+          </TouchableOpacity>}
         </View>
         </View>
-        {(this.props.toggleForm === true)? <Available navigation={this.props.navigation}/> : null}
+        {this.props.getMyEvents[0]? null : (this.props.toggleForm === true)? <Available navigation={this.props.navigation}/> : null}
       </View>
     );
   }
@@ -117,7 +117,8 @@ const mapStateToProps = (state) => {
   return {
     toggleForm: state.toggle.toggleForm,
     login: state.login,
-    user: state.user
+    user: state.user,
+    getMyEvents: state.getMyEvents
   };
 };
 

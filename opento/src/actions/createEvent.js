@@ -9,7 +9,6 @@ export const locationInput = (location) => {
 
 
 export const createEvent = (location, user) => {
-
   return {
     type: 'CREATE_EVENT',
     payload: axios.post(`http://localhost:3000/createevent/` + `${location}`, user)
@@ -17,6 +16,16 @@ export const createEvent = (location, user) => {
       console.log(error);
     })
   };
+}
+
+export const populateInvited = (eventInfo) => {
+return {
+  type: 'POPULATE_INVITED',
+  payload: axios.post(`http://localhost:3000/populateinvited/`, eventInfo)
+  .catch((error) => {
+    console.log(error);
+  })
+};
 }
 
 

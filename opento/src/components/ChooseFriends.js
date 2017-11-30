@@ -35,9 +35,12 @@ class ChooseFriends extends React.Component {
         <View style={styles.footer}>
             <TouchableOpacity onPress={() => {
                   this.props.createEventActions.createEvent(this.props.createEvent.location, this.props.user)
-                    .then(()=> {
-                      this.props.navigation.navigate('Feed')
 
+                    .then(()=> {
+                      this.props.createEventActions.populateInvited(this.props.createEvent)
+                        .then(() => {
+                      this.props.navigation.navigate('Feed')
+                    })
                   })
               }}>
               <Image style={styles.next}  source={require('../images/go.png')}/>
@@ -89,7 +92,8 @@ const mapStateToProps = (state) => {
   return {
     friends: state.getFriends,
     user: state.user,
-    createEvent: state.createEvent
+    createEvent: state.createEvent,
+    getMyEvents: state.getMyEvents
   };
 };
 

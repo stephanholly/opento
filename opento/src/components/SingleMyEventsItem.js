@@ -1,7 +1,9 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import * as getMyEventsActions from '../actions/getMyEvents'
 
 class SingleMyEventsItem extends React.Component {
 
@@ -14,10 +16,17 @@ class SingleMyEventsItem extends React.Component {
           <Text style={styles.username}>Current</Text>
           <Text style={styles.location}>{this.props.location}</Text>
         </View>
-        <View style={styles.handandclick}>
-          <Text style={styles.clicks}>{this.props.clicks}</Text>
-          <Image style={styles.clickImage} source={require('../images/clicks.png')}/>
-        </View>
+        <View style={styles.rightcolumn}>
+          <View style={styles.handandclick}>
+            <Text style={styles.clicks}>{this.props.clicks}</Text>
+            <Image style={styles.clickImage} source={require('../images/clicks.png')}/>
+          </View>
+          <TouchableOpacity style={styles.ex} onPress={() => {
+              this.props.getMyEventsActions.deleteMyEvent(this.props.id)
+            }}>
+            <Text style={styles.x}>X</Text>
+          </TouchableOpacity>
+      </View>
       </View>
     );
   }
@@ -55,7 +64,6 @@ const styles = StyleSheet.create({
   },
   rows: {
   alignSelf: 'center',
-  textAlign: 'center'
   },
   clickImage: {
     height: 18,
@@ -75,11 +83,38 @@ const styles = StyleSheet.create({
     paddingRight: 3,
     color: 'white',
   },
+  rightcolumn: {
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  ex: {
+    height: 15,
+    width: 15,
+    backgroundColor: '#2D9CDB',
+    marginLeft: 17,
+    marginBottom: 15,
+    paddingBottom: 8,
+    borderRadius: 8
+  },
+  x: {
+    color: 'white',
+    paddingLeft: 3
+  },
   handandclick: {
     flexDirection: 'row'
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMyEventsActions: bindActionCreators(getMyEventsActions, dispatch),
+  };
+};
 
-export default connect(null, null)(SingleMyEventsItem);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleMyEventsItem);

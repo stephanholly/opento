@@ -61,6 +61,15 @@ router.get('/myevents/:username', function(req, res, next) {
 });
 
 
+//deactivate my event
+router.post('/myevents/delete/:id', function(req, res, next) {
+knex.raw(`update events set active = FALSE where id = ${req.params.id}`)
+.then(data => {
+  console.log("req", req.params.id)
+  res.json(req.params.id)
+})
+})
+
 // get friendIDS
 router.get('/friendshipids/:id', function(req, res, next) {
   knex.raw(`SELECT users.id from users join friendships on friendships.friendid2 = users.id where friendships.friendid1 = '${req.params.id}' and friendships.pending = 'false'`)
