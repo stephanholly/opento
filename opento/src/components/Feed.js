@@ -17,6 +17,7 @@ import * as getMyEventsActions from '../actions/getMyEvents'
 import * as pendingFRActions from '../actions/pendingFR'
 import * as pendingFRInfoActions from '../actions/pendingFRInfo'
 
+
 class Feed extends React.Component {
 
   componentDidMount = () => {
@@ -31,6 +32,7 @@ class Feed extends React.Component {
       this.props.userActions.getFriendIds(this.props.user.id)
       this.props.pendingFRActions.pendingFR(this.props.user.id)
       this.props.pendingFRInfoActions.pendingFRInfo(this.props.user.id)
+
   })
 }
 
@@ -51,18 +53,20 @@ class Feed extends React.Component {
     headerStyle: {
       backgroundColor: '#79CAE4',
     },
+    headerBackTitle: null,
+
   });
   render() {
-    console.log("pendingFRInfo", this.props.pendingFRInfo)
+    console.log("this.props.nav", this.props.navigation)
     const { navigate } = this.props.navigation;
     return (
 
       <View style={styles.container}>
         <HeaderInfo user={this.props.user} navigation={this.props.navigation}/>
         <Tabs/>
-        {(this.props.myevents === true)? <MyEvents pendingFRInfo={this.props.pendingFRInfo} getMyEvents={this.props.getMyEvents}/> : null}
+        {(this.props.myevents === true)? <MyEvents navigation={this.props.navigation} pendingFRInfo={this.props.pendingFRInfo} getMyEvents={this.props.getMyEvents}/> : null}
         {(this.props.feed === true)? <MyFeed getFeed={this.props.getFeed}/> : null}
-        {(this.props.active === true)? <JoinedEvents getActive={this.props.getActive}/> : null}
+        {(this.props.active === true)? <JoinedEvents navigation={this.props.navigation} getActive={this.props.getActive}/> : null}
       </View>
     );
   }
@@ -131,7 +135,8 @@ const mapStateToProps = (state) => {
     getFeed: state.getFeed,
     getMyEvents: state.getMyEvents,
     getActive: state.getActive,
-    pendingFRInfo: state.pendingFRInfo
+    pendingFRInfo: state.pendingFRInfo,
+
   };
 };
 
@@ -142,7 +147,7 @@ const mapDispatchToProps = (dispatch) => {
     getActiveActions: bindActionCreators(getActiveActions, dispatch),
     getMyEventsActions: bindActionCreators(getMyEventsActions, dispatch),
     pendingFRActions: bindActionCreators(pendingFRActions, dispatch),
-    pendingFRInfoActions: bindActionCreators(pendingFRInfoActions, dispatch)
+    pendingFRInfoActions: bindActionCreators(pendingFRInfoActions, dispatch),
   };
 };
 

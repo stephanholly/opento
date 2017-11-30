@@ -11,6 +11,9 @@ import Tabs from './components/Tabs'
 import Available from './components/Available'
 import ChooseFriends from './components/ChooseFriends'
 import HeaderInfo from './components/HeaderInfo'
+import MessageRoom from './components/MessageRoom'
+import SingleActiveItem from './components/SingleActiveItem'
+import JoinedEvents from './components/JoinedEvents'
 
 
 const Navigator = StackNavigator({
@@ -22,8 +25,10 @@ const Navigator = StackNavigator({
   Tabs: {screen: Tabs},
   Available: {screen: Available},
   ChooseFriends: {screen: ChooseFriends},
-  HeaderInfo: {screen: HeaderInfo}
-
+  HeaderInfo: {screen: HeaderInfo},
+  MessageRoom: {screen: MessageRoom},
+  SingleActiveItem: {screen: SingleActiveItem},
+  JoinedEvents: {screen: JoinedEvents}
 });
 
 export default Navigator;

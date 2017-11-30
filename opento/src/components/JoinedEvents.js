@@ -3,9 +3,11 @@ import {TouchableOpacity,Text,Image, View, Button, StyleSheet, ScrollView, TextI
 import SingleActiveItem from './SingleActiveItem'
 
 
-const JoinedEvents = ({getActive}) => {
+const JoinedEvents = ({getActive, navigation}) => {
+  console.log("NAV: ", navigation);
 
-  let theActive = getActive.map((active, idx) => <SingleActiveItem
+
+  let theActive = getActive.map((active, idx) => { return (<SingleActiveItem
       key={idx}
       id={active.id}
       username={ active.eventcreatorname }
@@ -14,12 +16,14 @@ const JoinedEvents = ({getActive}) => {
       clicked={ active.clicked }
       location={active.location}
       picurl={active.creatorpic}
-    />)
+      eventcreatorid={active.eventcreatorid}
+      navigation={navigation}
+    />)})
 
 
     return (
 
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}  >
           {theActive}
       </ScrollView>
     )

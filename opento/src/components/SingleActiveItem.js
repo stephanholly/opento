@@ -1,13 +1,25 @@
 import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import * as navActions from '../actions/navActions'
+
+import MessageRoom from './MessageRoom'
 
 class SingleActiveItem extends React.Component {
 
   render() {
+    console.log("PROPS SAI: ", this.props);
+
+
     let picture = this.props.picurl
+
     return (
+      <TouchableOpacity onPress={() => {
+            this.props.navActions.getID(this.props.eventcreatorid)
+              this.props.navigation.navigate('MessageRoom')
+          }}>
       <View style={styles.container}>
         <View>
           <Image style={styles.profilePic} source={{isStatic:true, uri: picture}}/>
@@ -17,9 +29,9 @@ class SingleActiveItem extends React.Component {
           <Text style={styles.location}>{this.props.location}</Text>
         </View>
         <View style={styles.handandclick}>
-
         </View>
       </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -75,6 +87,18 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    user2: state.user2,
+  };
+};
 
 
-export default connect(null, null)(SingleActiveItem);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    navActions: bindActionCreators(navActions, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleActiveItem);

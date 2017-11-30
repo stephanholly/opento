@@ -3,6 +3,7 @@ import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from '
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import * as navActions from '../actions/navActions'
 import * as getMyEventsActions from '../actions/getMyEvents'
 
 class SingleMyEventsItem extends React.Component {
@@ -10,6 +11,10 @@ class SingleMyEventsItem extends React.Component {
   render() {
     let picture = this.props.picurl
     return (
+      <TouchableOpacity onPress={() => {
+            this.props.navActions.getID(1)
+              this.props.navigation.navigate('MessageRoom')
+          }}>
       <View style={styles.container}>
         <View style={styles.green}></View>
         <View style={styles.rows}>
@@ -28,6 +33,7 @@ class SingleMyEventsItem extends React.Component {
           </TouchableOpacity>
       </View>
       </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -114,6 +120,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMyEventsActions: bindActionCreators(getMyEventsActions, dispatch),
+    navActions: bindActionCreators(navActions, dispatch)
   };
 };
 

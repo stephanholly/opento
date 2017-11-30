@@ -4,7 +4,7 @@ import SingleMyEventsItem from './SingleMyEventsItem'
 import SingleFriendRequest from './SingleFriendRequest'
 
 
-const MyEvents = ({getMyEvents, pendingFRInfo}) => {
+const MyEvents = ({getMyEvents, pendingFRInfo, navigation}) => {
 
   let theMyEvents = getMyEvents.map((event, idx) => <SingleMyEventsItem
       key={idx}
@@ -15,6 +15,7 @@ const MyEvents = ({getMyEvents, pendingFRInfo}) => {
       clicked={ event.clicked }
       location={event.location}
       picurl={event.creatorpic}
+      navigation={navigation}
     />)
 
     let theMyFR = pendingFRInfo.map((fr, idx) => <SingleFriendRequest

@@ -3,6 +3,7 @@ import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import firebase from 'firebase';
 
+
 import LoginForm from './LoginForm';
 
 
@@ -26,6 +27,7 @@ class Splash extends React.Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     return (
       <View style={styles.container}>
         <LoginForm navigation={this.props.navigation} />

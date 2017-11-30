@@ -55,4 +55,44 @@ router.post('/populateinvited', function(req, res, next) {
   })}
 })
 
+/* GET ALL MESSAGES FROM USER TO USER */
+router.get(`/:id/message/:mid`, function(req,res,next){
+  knex.raw(`
+      select messages.*, users.username as from_name
+      from messages
+      inner join users on users.id = messages.from_id
+      WHERE (from_id = ${req.params.id} and to_id = ${req.params.mid})
+      OR (from_id = ${req.params.mid} and to_id = ${req.params.id})
+      ORDER BY created_at
+    `)
+    .then(data => {
+
+      let someData = [];
+
+      data.rows.map(message => {
+        let messageObject = {
+          _id: message.id,
+          text: message.message,
+          createdAt: new Date(),
+          user: {
+            _id: req.params.id == message.from_id ? 1 : 2,
+            name: message.from_name
+          }
+        }
+        someData.unshift(messageObject)
+      })
+      res.json(someData)
+    })
+})
+
+/* POST NEW MESSAGE FROM USER TO USER */
+router.post('/:id/message/:mid', function(req,res,next){
+  knex('messages')
+    .insert({from_id: `${req.params.id}`, to_id: `${req.params.mid}`, message: `${req.body.message}`})
+    .then(data => {
+      res.send(data)
+    })
+})
+
+
 module.exports = router;

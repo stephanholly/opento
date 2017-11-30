@@ -29,7 +29,7 @@ router.get('/feed/:uid', function(req, res, next) {
 
 //get active
 router.get('/active/:uid', function(req, res, next) {
-  knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and eventinvited.clicked = TRUE and users.uid = '${req.params.uid}'`)
+  knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.eventcreatorid, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on eventinvited.inviteeid = users.id  where events.active = TRUE and eventinvited.clicked = TRUE and users.uid = '${req.params.uid}'`)
   .then(data => {
     res.json(data.rows)
   });
@@ -42,7 +42,7 @@ router.post('/active/add/:eventid/:myid', function(req, res, next) {
   .then(data => {
     knex.raw(`update events set clicks = clicks + 1 where events.id = '${req.params.eventid}'`)
     .then( data2 => {
-    knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on users.id = eventinvited.inviteeid where events.id = '${req.params.eventid}' and users.id = '${req.params.myid}'`)
+    knex.raw(`SELECT events.id, events.location, events.creatorpic, events.eventcreatorname, events.eventcreatorid, events.active, eventinvited.clicked FROM events join eventinvited on events.id = eventinvited.eventid join users on users.id = eventinvited.inviteeid where events.id = '${req.params.eventid}' and users.id = '${req.params.myid}'`)
   .then(data1 => {
     res.json(data1.rows)
   });
