@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import AllFriends from './AllFriends'
 
 import * as getFriendsActions from '../actions/getFriends'
+import * as createEventActions from '../actions/createEvent'
 
 class ChooseFriends extends React.Component {
   componentWillMount = () => {
@@ -32,7 +33,13 @@ class ChooseFriends extends React.Component {
       <View style={styles.container}>
         <AllFriends friends={this.props.friends}/>
         <View style={styles.footer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Feed')}>
+            <TouchableOpacity onPress={() => {
+                  this.props.createEventActions.createEvent(this.props.createEvent.location, this.props.user)
+                    .then(()=> {
+                      this.props.navigation.navigate('Feed')
+
+                  })
+              }}>
               <Image style={styles.next}  source={require('../images/go.png')}/>
             </TouchableOpacity>
         </View>
@@ -81,7 +88,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     friends: state.getFriends,
-    user: state.user
+    user: state.user,
+    createEvent: state.createEvent
   };
 };
 
@@ -89,6 +97,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
 
     getFriendsActions: bindActionCreators(getFriendsActions, dispatch),
+    createEventActions: bindActionCreators(createEventActions, dispatch)
 
   };
 };

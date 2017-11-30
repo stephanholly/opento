@@ -4,7 +4,7 @@ import IndFriend from './IndFriend'
 
 
 const AllFriends = ({friends}) => {
-
+  let indArr = []
   let theFriends = friends.map((friend, idx) => <IndFriend
       key={idx}
       id={friend.id}
@@ -13,6 +13,7 @@ const AllFriends = ({friends}) => {
       lastname={ friend.lastname}
       picurl={ friend.picurl }
       uid={friend.uid}
+      checked={false}
     />)
 
 

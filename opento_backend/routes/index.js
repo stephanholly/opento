@@ -35,8 +35,14 @@ router.get('/friends/:id', function(req, res, next) {
   });
 });
 
-
-
+// create event part 1
+router.post('/createevent/:location', function(req, res, next) {
+  knex.raw(`insert into events (location, clicks, eventcreatorid, eventcreatorname, active, creatorpic) values ( '${req.params.location}', 0, '${req.body.id}', '${req.body.username}', TRUE, '${req.body.picurl}' ) returning *`)
+  .then(data => {
+    console.log("data.rows", data.rows)
+    res.json(data.rows[0])
+  })
+})
 
 
 

@@ -1,4 +1,4 @@
-import firebase from 'axios';
+import axios from 'axios';
 
 export const locationInput = (location) => {
   return {
@@ -8,13 +8,21 @@ export const locationInput = (location) => {
 };
 
 
-export const createEvent = (info) => {
-  console.log(info);
+export const createEvent = (location, user) => {
+
   return {
     type: 'CREATE_EVENT',
-    payload: axios.post(`http://localhost:3000/createevent/`, info)
+    payload: axios.post(`http://localhost:3000/createevent/` + `${location}`, user)
     .catch((error) => {
       console.log(error);
     })
   };
 }
+
+
+export const addFriendToEvent = (id) => {
+  return {
+    type: 'ADD_FRIEND',
+    payload: id
+  };
+};

@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity,Text,Image, View, Button, StyleSheet, TextInput} from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Icon from 'react-native-vector-icons';
+
 
 import HeaderInfo from './HeaderInfo';
 import Tabs from './Tabs';

@@ -8,6 +8,26 @@
 		<data>
 		xMdwd+oRkDd+qPOCVqB4CTfUNOA=
 		</data>
+		<key>Entypo.ttf</key>
+		<data>
+		R4cKZ91Qhxdl95nKqX2ochnuR8U=
+		</data>
+		<key>EvilIcons.ttf</key>
+		<data>
+		QZrcvnS7qREj2zspB3XjYvIS8+U=
+		</data>
+		<key>Feather.ttf</key>
+		<data>
+		AiHzjp4t0CEzVCcxbr7QXuznQyM=
+		</data>
+		<key>FontAwesome.ttf</key>
+		<data>
+		E7HqtlqYPHpzvHmXxHnWaUP3xss=
+		</data>
+		<key>Foundation.ttf</key>
+		<data>
+		SyvObHkkk6SlcWtv7C2+/olJLD8=
+		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
 		uJ8dPaHt75z19ijs08lkugHq/RA=
@@ -55,7 +75,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		2cDkGM2BdcGqUo7HW20D5UEDz1c=
+		qZ/gKBqrMNmFmsVhCzvdzdHYRys=
+		</data>
+		<key>Ionicons.ttf</key>
+		<data>
+		D3lWcE/mG0nEHqGiIFEkD3AKK0Q=
+		</data>
+		<key>MaterialCommunityIcons.ttf</key>
+		<data>
+		iEMpKSoaB/KiSnpQryZBH+pXuYo=
+		</data>
+		<key>MaterialIcons.ttf</key>
+		<data>
+		/AXeMSNOAJD33cKM4bI69AJssdo=
+		</data>
+		<key>Octicons.ttf</key>
+		<data>
+		43wPh5FmspBv+00q8kJl9AIbRBc=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -71,15 +107,23 @@
 		</data>
 		<key>PlugIns/opentoTests.xctest/Info.plist</key>
 		<data>
-		GhSOuHwY7cronCoac+v0oH9r88E=
+		StHnLegDVoUuF072LdxjirdaP2A=
 		</data>
 		<key>PlugIns/opentoTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
-		aOXkn3UYMEMMfgBHxdBRzBJ8Ob0=
+		t/nmaKuHcQd+0Z7GENzUE1Ie5Gw=
 		</data>
 		<key>PlugIns/opentoTests.xctest/opentoTests</key>
 		<data>
-		Od5zyA2gRvmvtOhvVBQZFaL6oFY=
+		aG4SkW+Mpp4W0Hzp1vH68VXpfEU=
+		</data>
+		<key>SimpleLineIcons.ttf</key>
+		<data>
+		n/uBpaEREuKS8swyPphIa61ZdZk=
+		</data>
+		<key>Zocial.ttf</key>
+		<data>
+		C9pZx7zT05J94EfgkYdaRCi/0as=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -93,6 +137,61 @@
 			<key>hash2</key>
 			<data>
 			w9iY0ZJUUN4z5BwiO+SFPxQt+FdniPp2FTu/6JxyOMQ=
+			</data>
+		</dict>
+		<key>Entypo.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			R4cKZ91Qhxdl95nKqX2ochnuR8U=
+			</data>
+			<key>hash2</key>
+			<data>
+			3QhJoVkfiNp5N7I/kiQYpc7FTgdeCePMyo/rYgFvqoI=
+			</data>
+		</dict>
+		<key>EvilIcons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QZrcvnS7qREj2zspB3XjYvIS8+U=
+			</data>
+			<key>hash2</key>
+			<data>
+			J9GohnZmGjoiaVdpUtb3ANoFZEvAMFUR3iO3D3HKVDY=
+			</data>
+		</dict>
+		<key>Feather.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AiHzjp4t0CEzVCcxbr7QXuznQyM=
+			</data>
+			<key>hash2</key>
+			<data>
+			sse5lKY8HPl6gBWzGq4njD9mmOqvSOduEWdc+dNdrHY=
+			</data>
+		</dict>
+		<key>FontAwesome.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			E7HqtlqYPHpzvHmXxHnWaUP3xss=
+			</data>
+			<key>hash2</key>
+			<data>
+			qljzPyOaD7AvXHpsRcBD16msmgkzNYBmlOzW1O3A1qg=
+			</data>
+		</dict>
+		<key>Foundation.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SyvObHkkk6SlcWtv7C2+/olJLD8=
+			</data>
+			<key>hash2</key>
+			<data>
+			fh3QPdTOkLZYBSVUzXRZ3xZxZxc4mlUvpMbVal+JM+Y=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
@@ -207,6 +306,50 @@
 			2GeVhBYey4k5ngBQyY0UClJrw3ZTt6Ghhsmq8KSfeMA=
 			</data>
 		</dict>
+		<key>Ionicons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			D3lWcE/mG0nEHqGiIFEkD3AKK0Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			u0dnmwuuuEgbf1HGitM65aUmc2y1CxcXzGD/a2X5CKM=
+			</data>
+		</dict>
+		<key>MaterialCommunityIcons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			iEMpKSoaB/KiSnpQryZBH+pXuYo=
+			</data>
+			<key>hash2</key>
+			<data>
+			1bSKsbDzuZUQE0oDJhp+sgYYtyyRBwyCUcQIAoyRcm4=
+			</data>
+		</dict>
+		<key>MaterialIcons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/AXeMSNOAJD33cKM4bI69AJssdo=
+			</data>
+			<key>hash2</key>
+			<data>
+			t/Sjq1YgSPKN0fppFgG8QzY6YdD4dtFtgxbFLk8y1pY=
+			</data>
+		</dict>
+		<key>Octicons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			43wPh5FmspBv+00q8kJl9AIbRBc=
+			</data>
+			<key>hash2</key>
+			<data>
+			IDC914RgQrcm7e1pDO4UjqugvZKBAae3xLoaLztAPMg=
+			</data>
+		</dict>
 		<key>PlugIns/opentoTests.xctest.dSYM/Contents/Info.plist</key>
 		<dict>
 			<key>hash</key>
@@ -233,33 +376,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GhSOuHwY7cronCoac+v0oH9r88E=
+			StHnLegDVoUuF072LdxjirdaP2A=
 			</data>
 			<key>hash2</key>
 			<data>
-			HYTDBGX/ZXZdm/ygM28Y4p2UptR+Omr2CwuZj6qh348=
+			UU2bogPbPYXWbPot3QXbjMrxIrtG0+YBbwGaEfenHrI=
 			</data>
 		</dict>
 		<key>PlugIns/opentoTests.xctest/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aOXkn3UYMEMMfgBHxdBRzBJ8Ob0=
+			t/nmaKuHcQd+0Z7GENzUE1Ie5Gw=
 			</data>
 			<key>hash2</key>
 			<data>
-			H7hbVMbER/+KAkr+Hyw0xlzXK3KTliADfBniljEPHqA=
+			BZVHTBGAEKT0MTh0C68GOMCpcxhkH6nCcQ1Zlz+fAag=
 			</data>
 		</dict>
 		<key>PlugIns/opentoTests.xctest/opentoTests</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Od5zyA2gRvmvtOhvVBQZFaL6oFY=
+			aG4SkW+Mpp4W0Hzp1vH68VXpfEU=
 			</data>
 			<key>hash2</key>
 			<data>
-			YErxAh4fgDNRYSK+LFYle38kBP6TAGRO5CmfCEVMMEg=
+			xPWNhbbgrE0WMoi6yiYTVh2zjVA6vhomTQM9mBlSneA=
+			</data>
+		</dict>
+		<key>SimpleLineIcons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n/uBpaEREuKS8swyPphIa61ZdZk=
+			</data>
+			<key>hash2</key>
+			<data>
+			P1Ad2wXHCCm7tRz+nKn/9X854GBFfCV7PM8l33Z/CHA=
+			</data>
+		</dict>
+		<key>Zocial.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			C9pZx7zT05J94EfgkYdaRCi/0as=
+			</data>
+			<key>hash2</key>
+			<data>
+			17EKHr4YMOWi8I9JA7moDiwZEsDdL3O5P88r+DIhZgI=
 			</data>
 		</dict>
 	</dict>

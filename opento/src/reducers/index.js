@@ -18,6 +18,7 @@ import friendRequest from './friendRequest'
 import pendingFRInfo from './pendingFRInfo'
 import getFriends from './getFriends'
 import createEvent from './createEvent'
+import populateEventInvited from './populateEventInvited'
 
 const rootReducer = combineReducers({
   nav,
@@ -38,7 +39,8 @@ const rootReducer = combineReducers({
   friendRequest,
   pendingFRInfo,
   getFriends,
-  createEvent
+  createEvent,
+  populateEventInvited
 });
 
 export default rootReducer;
