@@ -42,7 +42,7 @@ class Available extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
   },
   input1: {
     flexDirection: 'row',
@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     backgroundColor: 'white',
+    borderWidth: 0.5,
+    borderColor: '#2D9CDB',
     marginTop: 10
   },
   button: {
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 26,
-    color: 'white',
+    color: '#2D9CDB',
     marginTop: 10,
   },
 });

@@ -28,7 +28,7 @@ const MyFeed = ({getFeed}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
   },
 
 });

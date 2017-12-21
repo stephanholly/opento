@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flexDirection: 'row',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     borderBottomColor: '#2D9CDB',
     justifyContent: "space-between",
     paddingRight: 25,

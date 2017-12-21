@@ -42,9 +42,9 @@ class SingleMyEventsItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     borderBottomColor: '#2D9CDB',
     justifyContent: "space-between"
   },
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'green'
   },
   username: {
-    color: 'white',
+    color: '#2D9CDB',
     fontSize: 25,
     paddingTop: 5,
     textAlign: 'center'
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 10,
     paddingRight: 3,
-    color: 'white',
+    color: '#2D9CDB',
   },
   rightcolumn: {
     flexDirection: 'column',

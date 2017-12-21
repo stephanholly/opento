@@ -52,7 +52,7 @@ class Friends extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
 
   },
   logo: {

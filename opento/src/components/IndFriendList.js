@@ -25,10 +25,10 @@ class IndFriendList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#2D9CDB',
     alignSelf: 'center',
     width: '100%',
     justifyContent: 'space-between'
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   username: {
 
-    color: 'white',
+    color: '#2D9CDB',
     fontSize: 30,
     paddingTop: 8
   },

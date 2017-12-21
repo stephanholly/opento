@@ -29,7 +29,7 @@ router.get('/friendships/:uid', function(req, res, next) {
 
 // get friends
 router.get('/friends/:id', function(req, res, next) {
-  knex.raw(`select users.id, users.username, users.picurl, users.uid from users join friendships on users.id = friendships.friendid2 where friendships.friendid1 = '${req.params.id}'`)
+  knex.raw(`select users.id, users.username, users.picurl, users.uid from users join friendships on users.id = friendships.friendid2 where friendships.friendid1 = '${req.params.id}' and friendships.pending = 'false'`)
   .then(data => {
     res.json(data.rows)
   });

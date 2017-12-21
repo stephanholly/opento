@@ -8,13 +8,13 @@ import * as friendRequestAction from '../actions/friendRequest'
 class FriendRequest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { uri: require('../images/plus.png') }
+    this.state = { uri: require('../images/blueplus.png') }
   }
 
   changeLogo() {
     console.log('state changed!');
     this.setState({
-      uri: require('../images/clock.gif')
+      uri: require('../images/clock3.png')
     });
   }
 
@@ -39,13 +39,13 @@ class FriendRequest extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     height: '100%',
   },
   sendfriend: {
-    height: 20,
-    width: 20,
-    marginTop: 20,
+    height: 17,
+    width: 17,
+    marginTop: 21,
     marginRight: 10
   },
 });

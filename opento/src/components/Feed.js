@@ -75,7 +75,7 @@ class Feed extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     height: '100%'
 
   },

@@ -14,7 +14,7 @@ class HeaderInfo extends React.Component {
 
   render() {
     let picture = this.props.user.picurl
-    console.log("blerg", this.props.getMyEvents[0])
+
     return (
       <View style={styles.container}>
       <View style={styles.header}>
@@ -49,11 +49,11 @@ class HeaderInfo extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     marginBottom: 10,
   },
   header: {
-    backgroundColor: '#79CAE4',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
   },
   profilePic: {
@@ -72,19 +72,19 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    color: '#FFFFFF',
+    color: '#2D9CDB',
     marginLeft: 8,
     marginTop: 15,
   },
   cef: {
     padding: 10,
     paddingBottom: 0,
-    color: '#FFFFFF',
+    color: '#2D9CDB',
   },
   nums: {
     padding: 10,
     paddingTop: 3,
-    color: '#FFFFFF',
+    color: '#2D9CDB',
     marginBottom: 10,
     alignSelf: 'center'
   },
